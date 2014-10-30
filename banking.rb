@@ -17,6 +17,9 @@
 # Milam 103014
 
 class Person
+	def initialize
+		
+	end
 
 end
 
