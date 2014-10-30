@@ -17,15 +17,30 @@
 # Milam 103014
 
 class Person
-	def initialize
-		
+# A new person should have a name set and should have a 
+# certain amount of cash that the person keeps with him/her.
+
+	attr_reader :name
+	attr_accessor :cash_onhand
+
+	def initialize(new_name, starting_cash)
+		@name = new_name
+		@cash_onhand = starting_cash
 	end
 
 end
 
 class Bank
-	def initialize
-		
+# With the bank, you should be able to:
+# open a new account using the person's name
+# withdraw money from a person's account
+# deposit money into a person's account
+# transfer money to another bank
+
+	attr_reader :bank_name
+	
+	def initialize(new_name)
+		@bank_name = new_name
 	end
 
 end
