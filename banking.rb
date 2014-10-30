@@ -26,6 +26,7 @@ class Person
 	def initialize(new_name, starting_cash)
 		@name = new_name
 		@cash_onhand = starting_cash
+		puts "Hi, #{@name}, you have $#{@cash_onhand}."
 	end
 
 end
@@ -38,9 +39,10 @@ class Bank
 # transfer money to another bank
 
 	attr_reader :bank_name
-	
+
 	def initialize(new_name)
 		@bank_name = new_name
+		puts "#{@bank_name} was just created."
 	end
 
 end
