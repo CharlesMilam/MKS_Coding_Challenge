@@ -26,7 +26,7 @@ class Person
 	def initialize(new_name, starting_cash)
 		@name = new_name
 		@cash_onhand = starting_cash
-		puts "Hi, #{@name}, you have $#{@cash_onhand}."
+		puts "Hi, #{@name}. You have $#{@cash_onhand}!"
 	end
 
 end
@@ -39,10 +39,18 @@ class Bank
 # transfer money to another bank
 
 	attr_reader :bank_name
+	attr_accessor :accts
 
 	def initialize(new_name)
 		@bank_name = new_name
+		@accts = Array.new
 		puts "#{@bank_name} was just created."
+	end
+
+	# creates new account
+	def open_account(new_acct)
+		@accts.push({name: new_acct.name, bal: 0})
+		puts "#{new_acct.name.capitalize}, thanks for opening an account at #{@bank_name}"
 	end
 
 end
