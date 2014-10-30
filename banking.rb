@@ -24,5 +24,8 @@ class Person
 end
 
 class Bank
+	def initialize
+		
+	end
 
 end
