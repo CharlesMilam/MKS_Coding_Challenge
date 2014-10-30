@@ -15,6 +15,9 @@ chase.deposit(me, 200)
 chase.deposit(friend1, 300)
 chase.withdraw(me, 50)
 
+# transfers
+chase.transfer(me, wells_fargo, 100)
+
 
 
 
