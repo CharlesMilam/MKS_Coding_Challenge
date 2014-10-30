@@ -92,7 +92,7 @@ class Bank
 		# find the appropriate accounts and increment/decrement by the 
 		# transfer amount. 
 		# See comments for deposit and withdraw about utilizing a better method of
-		# finding accounts
+		# finding accounts. Yeah, I know, but there has to be a better way.
 		@accts.each do |acct_from|
 			if acct_from[:name] == account.name
 				transfer_bank.accts.each do |acct_to|
