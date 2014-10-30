@@ -48,9 +48,34 @@ class Bank
 	end
 
 	# creates new account
-	def open_account(new_acct)
-		@accts.push({name: new_acct.name, bal: 0})
-		puts "#{new_acct.name.capitalize}, thanks for opening an account at #{@bank_name}"
+	def open_account(new_account)
+		@accts.push({name: new_account.name, bal: 0})
+		puts "#{new_account.name.capitalize}, thanks for opening an account at #{@bank_name}"
 	end
+
+	# deposits money into specified account, decrements person's cash on hand
+	# for the deposited amount
+	def deposit(account, deposit_amt)
+		# get index for the account
+		# TODO find better method of finding the correct account
+		# is there a method getting the index in the array for
+		# a given key in the hash
+		@accts.each do |acct|
+			if acct[:name] == account.name
+				acct[:bal] += deposit_amt
+				account.cash_onhand -= deposit_amt
+				puts "#{account.name} deposited $#{deposit_amt} to #{@bank_name}. #{account.name} has $#{account.cash_onhand}. #{account.name}'s account has $#{acct[:bal]}."
+			end
+		end
+
+		
+	end
+
+	# withdraws money from specified account, increments person's cash on hannd
+	# for deposited amount
+	def withdraw(account, withdraw_amt)
+		
+	end
+
 
 end
