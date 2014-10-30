@@ -62,10 +62,14 @@ class Bank
 		# a given key in the hash, rather than looping through the 
 		# entire array
 		@accts.each do |acct|
-			if acct[:name] == account.name
-				acct[:bal] += deposit_amt
-				account.cash_onhand -= deposit_amt
-				puts "#{account.name} deposited $#{deposit_amt} to #{@bank_name}. #{account.name} has $#{account.cash_onhand}. #{account.name}'s account has $#{acct[:bal]}."
+			if acct[:name] == account.name  
+				if acct[:bal] > account.cash_onhand
+					acct[:bal] += deposit_amt
+					account.cash_onhand -= deposit_amt
+					puts "#{account.name} deposited $#{deposit_amt} to #{@bank_name}. #{account.name} has $#{account.cash_onhand}. #{account.name}'s account has $#{acct[:bal]}."
+				else
+					puts "#{acct[:name]} does not have enough cash to deposit $#{deposit_amt}."
+				end
 			end
 		end
 
@@ -79,9 +83,13 @@ class Bank
 		# account, other than by looping through all of them
 		@accts.each do |acct|
 			if acct[:name] == account.name
-				acct[:bal] -= withdraw_amt
-				account.cash_onhand += withdraw_amt
-				puts "#{account.name} withdrew $#{withdraw_amt} from #{@bank_name}. #{account.name} has $#{account.cash_onhand}. #{account.name}'s account has $#{acct[:bal]}."
+				if acct[:bal] > withdraw_amt
+					acct[:bal] -= withdraw_amt
+					account.cash_onhand += withdraw_amt
+					puts "#{account.name} withdrew $#{withdraw_amt} from #{@bank_name}. #{account.name} has $#{account.cash_onhand}. #{account.name}'s account has $#{acct[:bal]}."
+				else
+					puts "#{acct[:name]} does not have enough money in the account to withdraw $#{withdraw_amt}."
+				end
 			end
 		end
 	end
