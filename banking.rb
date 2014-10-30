@@ -63,12 +63,12 @@ class Bank
 		# entire array
 		@accts.each do |acct|
 			if acct[:name] == account.name  
-				if acct[:bal] > account.cash_onhand
+				if deposit_amt < account.cash_onhand
 					acct[:bal] += deposit_amt
 					account.cash_onhand -= deposit_amt
 					puts "#{account.name} deposited $#{deposit_amt} to #{@bank_name}. #{account.name} has $#{account.cash_onhand}. #{account.name}'s account has $#{acct[:bal]}."
 				else
-					puts "#{acct[:name]} does not have enough cash to deposit $#{deposit_amt}."
+					puts "#{account.name} does not have enough cash to deposit $#{deposit_amt}."
 				end
 			end
 		end
@@ -88,7 +88,7 @@ class Bank
 					account.cash_onhand += withdraw_amt
 					puts "#{account.name} withdrew $#{withdraw_amt} from #{@bank_name}. #{account.name} has $#{account.cash_onhand}. #{account.name}'s account has $#{acct[:bal]}."
 				else
-					puts "#{acct[:name]} does not have enough money in the account to withdraw $#{withdraw_amt}."
+					puts "#{account.name} does not have enough money in the account to withdraw $#{withdraw_amt}."
 				end
 			end
 		end
@@ -97,8 +97,6 @@ class Bank
 	# transfers money from bank of specified account to account of provided bank
 	# decrements and increments the appropriate accounts
 	def transfer(account, transfer_bank, transfer_amt)
-		# find the appropriate accounts and increment/decrement by the 
-		# transfer amount. 
 		# See comments for deposit and withdraw about utilizing a better method of
 		# finding accounts. Yeah, I know, but there has to be a better way.
 		@accts.each do |acct_from|
@@ -112,6 +110,18 @@ class Bank
 				end
 			end
 		end
+	end
+
+	# sums the balances for all accounts in a given bank
+	def total_cash_in_bank
+		# seems to be a good place for a recursive call
+		# something like a fold method, but not sure how
+		# to implement.
+		
+		total_cash = 0
+		@accts.each {|acct|  total_cash += acct[:bal]}
+
+		return "#{@bank_name} has $#{total_cash} in the bank."
 	end
 
 
