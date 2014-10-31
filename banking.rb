@@ -168,6 +168,7 @@ class Credit_Card
 	# sets the credit limit to given amount
 	def credit_limit(cc_limit)
 		@credit_limit = cc_limit
+		puts "Credit limit adjusted to $#{cc_limit}."
 	end
 
 	# applies charge to card if it does not exceed credit limit
