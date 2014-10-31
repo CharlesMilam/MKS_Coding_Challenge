@@ -130,9 +130,19 @@ class Bank
 	def create_card(account, card_params)
 		@accts.each do |acct|
 			if acct[:name] == account.name
-				acct[:card] = Credit_Card.new(card_params)
-				puts "New #{card_params[0]} #{card_params[1]} card created for #{account.name}, with a credit limit of $#{card_params[2].to_s} and an interest rate of #{card_params[3].to_s}%."
-				
+				card = acct[:card] = Credit_Card.new(card_params)
+				puts "New #{card.card_name} #{card.card_type} card created for #{account.name}, with a credit limit of $#{card.card_limit.to_s} and an interest rate of #{card.interest_rate.to_s}%."
+			end
+		end
+	end
+
+	# returns a card for a given account
+	def card(account)
+		@accts.each do |acct|
+			if acct[:name] == account.name
+				return acct[:card]
+			else
+				puts "Card not found for account #{account.name}."
 			end
 		end
 	end
@@ -144,13 +154,13 @@ class Credit_Card
 	# will create a new card, set a credit limit for the card,
 	# and accept charges and payments
 
-	attr_reader :name, :card_type
-	attr_accessor :credit_limit, :interest_rate
+	attr_reader :card_name, :card_type
+	attr_accessor :card_limit, :interest_rate
 
 	def initialize(card_params)
 		@card_name = card_params[0]
 		@card_type = card_params[1]
-		@credit_limit = card_params[2]		
+		@card_limit = card_params[2]		
 		@interest_rate = card_params[3]
 	end
 
@@ -158,5 +168,6 @@ class Credit_Card
 	def credit_limit(cc_limit)
 		@credit_limit = cc_limit
 	end
+
 
 end
