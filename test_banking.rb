@@ -26,6 +26,21 @@ chase.withdraw(me, 5000)
 puts chase.total_cash_in_bank
 puts wells_fargo.total_cash_in_bank
 
+# credit card
+chase.create_card(me, card_params = ["Sapphire", "credit", 1000, 0.1])
+puts chase.card(me).card_name
+puts chase.card(me).balance.to_s
+chase.card(me).charge(200)
+puts chase.card(me).balance.to_s
+chase.card(me).charge(801)
+chase.card(me).payment(50)
+puts chase.card(me).balance.to_s
+chase.card(me).credit_limit(750)
+
+
+
+
+
 
 
 
