@@ -35,7 +35,15 @@ puts chase.card(me).balance.to_s
 chase.card(me).charge(801)
 chase.card(me).payment(50)
 puts chase.card(me).balance.to_s
-chase.card(me).credit_limit(750)
+chase.card(me).card_limit = 750
+puts chase.card(me).card_limit.to_s
+puts chase.card(me).balance.to_s
+chase.card(me).interest
+puts chase.card(me).balance.to_s
+chase.card(me).payment(65)
+puts chase.card(me).balance.to_s
+chase.card(me).interest
+puts chase.card(me).balance.to_s
 
 
 
