@@ -155,13 +155,14 @@ class Credit_Card
 	# and accept charges and payments
 
 	attr_reader :card_name, :card_type
-	attr_accessor :card_limit, :interest_rate
+	attr_accessor :card_limit, :interest_rate, :balance
 
 	def initialize(card_params)
 		@card_name = card_params[0]
 		@card_type = card_params[1]
 		@card_limit = card_params[2]		
 		@interest_rate = card_params[3]
+		@balance = 0
 	end
 
 	# sets the credit limit to given amount
@@ -169,5 +170,14 @@ class Credit_Card
 		@credit_limit = cc_limit
 	end
 
+	# applies charge to card if it does not exceed credit limit
+	def charge(charge_amt)
+		if (@balance + charge_amt) < @card_limit
+			@balance += charge_amt
+			puts "Success. Transaction approved."
+		else
+			puts "Declined. Transaction would exceed credit limit."
+		end
+	end
 
 end
