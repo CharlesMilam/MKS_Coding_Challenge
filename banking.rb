@@ -124,5 +124,39 @@ class Bank
 		return "#{@bank_name} has $#{total_cash} in the bank."
 	end
 
+	# create a new credit for an account, with supplied
+	# card name, card type (credit|debit), credit limit,
+	# and interest rate
+	def create_card(account, card_params)
+		@accts.each do |acct|
+			if acct[:name] == account.name
+				acct[:card] = Credit_Card.new(card_params)
+				puts "New #{card_params[0]} #{card_params[1]} card created for #{account.name}, with a credit limit of $#{card_params[2].to_s} and an interest rate of #{card_params[3].to_s}%."
+				
+			end
+		end
+	end
+
+end
+
+class Credit_Card
+	# a credit card for a particular account within a bank
+	# will create a new card, set a credit limit for the card,
+	# and accept charges and payments
+
+	attr_reader :name, :card_type
+	attr_accessor :credit_limit, :interest_rate
+
+	def initialize(card_params)
+		@card_name = card_params[0]
+		@card_type = card_params[1]
+		@credit_limit = card_params[2]		
+		@interest_rate = card_params[3]
+	end
+
+	# sets the credit limit to given amount
+	def credit_limit(cc_limit)
+		@credit_limit = cc_limit
+	end
 
 end
