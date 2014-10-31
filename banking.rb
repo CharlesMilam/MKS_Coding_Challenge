@@ -165,12 +165,6 @@ class Credit_Card
 		@balance = 0
 	end
 
-	# sets the credit limit to given amount
-	def credit_limit(cc_limit)
-		@credit_limit = cc_limit
-		puts "Credit limit adjusted to $#{cc_limit}."
-	end
-
 	# applies charge to card if it does not exceed credit limit
 	def charge(charge_amt)
 		if (@balance + charge_amt) < @card_limit
@@ -185,6 +179,12 @@ class Credit_Card
 	def payment(payment_amt)
 		@balance -= payment_amt
 		puts "$#{payment_amt} applied to account balance."
+	end
+
+	# applies interest rate to card balance
+	def interest
+		@balance += @balance * @interest_rate
+		puts "Success. Interest rate applied to balance."
 	end
 
 end
