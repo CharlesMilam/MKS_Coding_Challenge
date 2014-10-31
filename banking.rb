@@ -180,4 +180,10 @@ class Credit_Card
 		end
 	end
 
+	# applies payment to card balance
+	def payment(payment_amt)
+		@balance -= payment_amt
+		puts "$#{payment_amt} applied to account balance."
+	end
+
 end
