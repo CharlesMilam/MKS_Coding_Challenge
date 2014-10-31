@@ -150,9 +150,10 @@ class Bank
 end
 
 class Credit_Card
-	# a credit card for a particular account within a bank
-	# will create a new card, set a credit limit for the card,
-	# and accept charges and payments
+	# a credit card for a particular account within a bank.
+	# will create a new card, set a credit limit, card type
+	# and interest rate for the card. Will accept charges and payments
+	# and apply interest to the card balance.
 
 	attr_reader :card_name, :card_type
 	attr_accessor :card_limit, :interest_rate, :balance
