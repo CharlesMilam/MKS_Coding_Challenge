@@ -52,7 +52,7 @@ puts wells_fargo.card(friend1).card_name
 wells_fargo.card(friend1).balance.to_s
 wells_fargo.card(friend1).charge(333)
 p wells_fargo.accts
-# wells_fargo.card(friend1).balance.to_s
+wells_fargo.card(friend1).balance.to_s
 
 
 
