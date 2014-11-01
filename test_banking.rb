@@ -14,6 +14,8 @@ wells_fargo.open_account(friend1)
 chase.deposit(me, 200)
 chase.deposit(friend1, 300)
 chase.withdraw(me, 50)
+wells_fargo.deposit(friend1, 100)
+wells_fargo.withdraw(friend1, 20)
 
 # transfers
 chase.transfer(me, wells_fargo, 100)
@@ -46,8 +48,10 @@ chase.card(me).interest
 puts chase.card(me).balance.to_s
 wells_fargo.create_card(friend1, card_params = ["Mega Interest", "credit", 1500, 0.17])
 p wells_fargo.accts
+puts wells_fargo.card(friend1).card_name
 wells_fargo.card(friend1).balance.to_s
-# wells_fargo.card(friend1).charge(333)
+wells_fargo.card(friend1).charge(333)
+p wells_fargo.accts
 # wells_fargo.card(friend1).balance.to_s
 
 
