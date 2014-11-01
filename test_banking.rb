@@ -47,11 +47,12 @@ puts chase.card(me).balance.to_s
 chase.card(me).interest
 puts chase.card(me).balance.to_s
 wells_fargo.create_card(friend1, card_params = ["Mega Interest", "credit", 1500, 0.17])
+p wells_fargo.accts
 puts wells_fargo.card(friend1).card_name
 wells_fargo.card(friend1).balance.to_s
 wells_fargo.card(friend1).charge(333)
-puts wells_fargo.card(friend1).balance.to_s
-# wells_fargo.card(friend1).balance.to_s
+p wells_fargo.accts
+wells_fargo.card(friend1).balance.to_s
 
 
 
