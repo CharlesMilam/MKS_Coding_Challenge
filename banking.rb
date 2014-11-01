@@ -4,20 +4,20 @@
 
 # Contains two classes:
 
-# Person class 
-# A new person should have a name set and should have a certain 
+# Person class
+# A new person should have a name set and should have a certain
 # amount of cash that the person keeps with him/her.
 
-# Bank class 
-# With the bank, you should be able to: 
-# open a new account using the person's name withdraw money from a person's account 
-# deposit money into a person's account 
+# Bank class
+# With the bank, you should be able to:
+# open a new account using the person's name withdraw money from a person's account
+# deposit money into a person's account
 # transfer money to another bank
 
 # Milam 103014
 
 class Person
-# A new person should have a name set and should have a 
+# A new person should have a name set and should have a
 # certain amount of cash that the person keeps with him/her.
 
 	attr_reader :name
@@ -59,10 +59,10 @@ class Bank
 		# get index for the account
 		# TODO find better method of finding the correct account
 		# is there a method for getting the index in the array for
-		# a given key in the hash, rather than looping through the 
+		# a given key in the hash, rather than looping through the
 		# entire array
 		@accts.each do |acct|
-			if acct[:name] == account.name  
+			if acct[:name] == account.name
 				if deposit_amt < account.cash_onhand
 					acct[:bal] += deposit_amt
 					account.cash_onhand -= deposit_amt
@@ -73,7 +73,7 @@ class Bank
 			end
 		end
 
-		
+
 	end
 
 	# withdraws money from specified account, increments person's cash on hannd
@@ -117,7 +117,7 @@ class Bank
 		# seems to be a good place for a recursive call
 		# something like a fold method, but not sure how
 		# to implement.
-		
+
 		total_cash = 0
 		@accts.each {|acct|  total_cash += acct[:bal]}
 
@@ -130,7 +130,7 @@ class Bank
 	def create_card(account, card_params)
 		@accts.each do |acct|
 			if acct[:name] == account.name
-				card = acct[:card] = Credit_Card.new(card_params)
+				card = (acct[:card] = Credit_Card.new(card_params))
 				puts "New #{card.card_name} #{card.card_type} card created for #{account.name}, with a credit limit of $#{card.card_limit.to_s} and an interest rate of #{card.interest_rate.to_s}%."
 			end
 		end
@@ -141,8 +141,6 @@ class Bank
 		@accts.each do |acct|
 			if acct[:name] == account.name
 				return acct[:card]
-			else
-				puts "Card not found for account #{account.name}."
 			end
 		end
 	end
@@ -161,7 +159,7 @@ class Credit_Card
 	def initialize(card_params)
 		@card_name = card_params[0]
 		@card_type = card_params[1]
-		@card_limit = card_params[2]		
+		@card_limit = card_params[2]
 		@interest_rate = card_params[3]
 		@balance = 0
 	end
