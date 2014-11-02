@@ -131,7 +131,7 @@ class Bank
 		@accts.each do |acct|
 			if acct[:name] == account.name
 				card = (acct[:card] = Credit_Card.new(card_params))
-				puts "New #{card.card_name} #{card.card_type} card created for #{account.name}, with a credit limit of $#{card.card_limit.to_s} and an interest rate of #{card.interest_rate.to_s}%."
+				puts "New #{card.card_name} card created for #{account.name}, with a credit limit of $#{card.card_limit.to_s} and an interest rate of #{card.interest_rate.to_s}%."
 			end
 		end
 	end
@@ -158,9 +158,8 @@ class Credit_Card
 
 	def initialize(card_params)
 		@card_name = card_params[0]
-		@card_type = card_params[1]
-		@card_limit = card_params[2]
-		@interest_rate = card_params[3]
+		@card_limit = card_params[1]
+		@interest_rate = card_params[2]
 		@balance = 0
 	end
 

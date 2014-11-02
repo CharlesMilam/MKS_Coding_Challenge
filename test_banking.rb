@@ -29,8 +29,7 @@ puts chase.total_cash_in_bank
 puts wells_fargo.total_cash_in_bank
 
 # credit card
-chase.create_card(me, card_params = ["Sapphire", "credit", 1000, 0.1])
-puts chase.card(me).card_name
+chase.create_card(me, card_params = ["Sapphire", 1000, 0.1])
 puts chase.card(me).balance.to_s
 chase.card(me).charge(200)
 puts chase.card(me).balance.to_s
@@ -46,13 +45,33 @@ chase.card(me).payment(65)
 puts chase.card(me).balance.to_s
 chase.card(me).interest
 puts chase.card(me).balance.to_s
-wells_fargo.create_card(friend1, card_params = ["Mega Interest", "credit", 1500, 0.17])
-p wells_fargo.accts
-puts wells_fargo.card(friend1).card_name
+
+chase.create_card(friend1, card_params = ["Sapphire", 1000, 0.1])
+puts chase.card(friend1).balance.to_s
+chase.card(friend1).charge(300)
+puts chase.card(friend1).balance.to_s
+chase.card(friend1).charge(701)
+chase.card(friend1).payment(150)
+puts chase.card(friend1).balance.to_s
+chase.card(friend1).card_limit = 1500
+puts chase.card(friend1).card_limit.to_s
+puts chase.card(friend1).balance.to_s
+chase.card(friend1).interest
+puts chase.card(friend1).balance.to_s
+chase.card(friend1).payment(50)
+puts chase.card(friend1).balance.to_s
+chase.card(friend1).interest
+puts chase.card(friend1).balance.to_s
+p chase.accts
+
+wells_fargo.create_card(friend1, card_params = ["Mega Interest", 1500, 0.17])
 wells_fargo.card(friend1).balance.to_s
 wells_fargo.card(friend1).charge(333)
-p wells_fargo.accts
 wells_fargo.card(friend1).balance.to_s
+wells_fargo.card(friend1).interest
+wells_fargo.card(friend1).balance.to_s
+p wells_fargo.accts
+
 
 
 
