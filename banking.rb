@@ -185,5 +185,4 @@ class Credit_Card
 		@balance += @balance * @interest_rate
 		puts "Success. Interest rate applied to balance."
 	end
-
 end

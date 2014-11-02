@@ -4,20 +4,20 @@
 
 # Contains two classes:
 
-# Person class 
-# A new person should have a name set and should have a certain 
+# Person class
+# A new person should have a name set and should have a certain
 # amount of cash that the person keeps with him/her.
 
-# Bank class 
-# With the bank, you should be able to: 
-# open a new account using the person's name withdraw money from a person's account 
-# deposit money into a person's account 
+# Bank class
+# With the bank, you should be able to:
+# open a new account using the person's name withdraw money from a person's account
+# deposit money into a person's account
 # transfer money to another bank
 
 # Milam 103014
 
 class Person
-# A new person should have a name set and should have a 
+# A new person should have a name set and should have a
 # certain amount of cash that the person keeps with him/her.
 
 	attr_reader :name
@@ -59,7 +59,7 @@ class Bank
 		# get index for the account
 		# TODO find better method of finding the correct account
 		# is there a method for getting the index in the array for
-		# a given key in the hash, rather than looping through the 
+		# a given key in the hash, rather than looping through the
 		# entire array
 		@accts.each do |acct|
 			if acct[:name] == account.name
@@ -69,7 +69,7 @@ class Bank
 			end
 		end
 
-		
+
 	end
 
 	# withdraws money from specified account, increments person's cash on hannd
@@ -89,8 +89,8 @@ class Bank
 	# transfers money from bank of specified account to account of provided bank
 	# decrements and increments the appropriate accounts
 	def transfer(account, transfer_bank, transfer_amt)
-		# find the appropriate accounts and increment/decrement by the 
-		# transfer amount. 
+		# find the appropriate accounts and increment/decrement by the
+		# transfer amount.
 		# See comments for deposit and withdraw about utilizing a better method of
 		# finding accounts
 		@accts.each do |acct_from|
