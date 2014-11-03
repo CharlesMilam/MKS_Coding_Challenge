@@ -153,7 +153,7 @@ class Credit_Card
 	# and interest rate for the card. Will accept charges and payments
 	# and apply interest to the card balance.
 
-	attr_reader :card_name, :card_type
+	attr_reader :card_name
 	attr_accessor :card_limit, :interest_rate, :balance
 
 	def initialize(card_params)
